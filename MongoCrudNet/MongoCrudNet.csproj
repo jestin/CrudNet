@@ -47,6 +47,9 @@
     <Compile Include="CRUD\IUpdatable.cs" />
     <Compile Include="Mongo\IMongoDbContext.cs" />
     <Compile Include="Mongo\MongoDbContext.cs" />
+    <Compile Include="Mongo\BaseMongoRepository.cs" />
+    <Compile Include="Mongo\IdentifiableMongoRepository.cs" />
+    <Compile Include="Mongo\IIdentifiable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
