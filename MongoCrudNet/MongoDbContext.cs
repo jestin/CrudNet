@@ -45,6 +45,7 @@ namespace MongoCrudNet.Mongo
                 if (Database != null)
                 {
                     EnsureIndexes();
+					SetUpClassMappings();
                     Initialized = true;
                 }
             }
@@ -64,7 +65,7 @@ namespace MongoCrudNet.Mongo
         }
 
         /// <summary>
-        /// This is a way to check if a class has already be
+        /// This is a way to check if a class has already been
         /// registered with the BsonClassMap.
         /// </summary>
         /// <param name="type"></param>
@@ -80,5 +81,12 @@ namespace MongoCrudNet.Mongo
         protected virtual void EnsureIndexes()
         {
         }
+
+		/// <summary>
+		/// Override this method to add any class mappings you may want for your database
+		/// </summary>
+		protected virtual void SetUpClassMappings()
+		{
+		}
     }
 }
