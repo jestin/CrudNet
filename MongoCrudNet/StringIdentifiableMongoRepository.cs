@@ -39,7 +39,7 @@ namespace MongoCrudNet.Mongo
         {
             try
             {
-                var result = Collection.Remove(Query.EQ("_id", item.Id.ToString()));
+                var result = Collection.Remove(Query.EQ("_id", item.Id));
                 return !result.HasLastErrorMessage;
             }
             catch (Exception)

@@ -39,7 +39,8 @@
     <Compile Include="IDeletable.cs" />
     <Compile Include="IRetrievable.cs" />
     <Compile Include="IUpdatable.cs" />
-    <Compile Include="IIdentifiable.cs" />
+    <Compile Include="IStringIdentifiable.cs" />
+    <Compile Include="IIntIdentifiable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
