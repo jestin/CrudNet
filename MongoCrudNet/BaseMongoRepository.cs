@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MongoCrudNet.CRUD;
+using CrudNet;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;

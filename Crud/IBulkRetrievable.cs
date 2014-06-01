@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MongoCrudNet.CRUD
+namespace CrudNet
 {
     public interface IBulkRetrievable<T>
     {

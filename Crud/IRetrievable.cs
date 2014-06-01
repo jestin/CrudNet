@@ -1,4 +1,4 @@
-﻿namespace MongoCrudNet.CRUD
+﻿namespace CrudNet
 {
     public interface IRetrievable<T>
     {

@@ -1,4 +1,4 @@
-﻿namespace MongoCrudNet.Mongo
+﻿namespace CrudNet
 {
     /// <summary>
     /// This is an interface to be implemented by domain objects or database objects (depending on
