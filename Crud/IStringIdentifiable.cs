@@ -6,8 +6,8 @@
     /// class has an Id field on it.  This interface allows a base implementation of
     /// IdentifiableMongoRepository to be provided.
     /// </summary>
-    public interface IIdentifiable
+    public interface IStringIdentifiable
     {
-        object Id { get; set; }
+        string Id { get; set; }
     }
 }

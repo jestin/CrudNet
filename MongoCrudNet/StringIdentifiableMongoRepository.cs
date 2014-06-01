@@ -12,9 +12,9 @@ namespace MongoCrudNet.Mongo
     /// for a domain object with an 'Id' field.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class IdentifiableMongoRepository<T> : BaseMongoRepository<T> where T : IIdentifiable, new()
+    public abstract class StringIdentifiableMongoRepository<T> : BaseMongoRepository<T> where T : IStringIdentifiable, new()
     {
-        protected IdentifiableMongoRepository(IMongoDbContext dbContext) : base(dbContext)
+        protected StringIdentifiableMongoRepository(IMongoDbContext dbContext) : base(dbContext)
         {
         }
 
