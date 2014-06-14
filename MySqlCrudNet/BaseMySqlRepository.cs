@@ -4,8 +4,15 @@ namespace MySqlCrudNet
 {
 	public abstract class BaseMySqlRepository<T> : ICreatable<T>, IRetrievable<T>, IUpdatable<T>, IDeletable<T>, IBulkRetrievable<T> where T : new()
 	{
-		protected BaseMySqlRepository()
+		#region Dependencies
+
+		protected readonly IMySqlDbContext Db;
+
+		#endregion
+
+		protected BaseMySqlRepository(IMySqlDbContext dbContext)
 		{
+			Db = dbContext;
 		}
 
 		#region ICreatable implementation
