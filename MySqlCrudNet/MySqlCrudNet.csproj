@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{97EC0C7C-2249-4546-81D2-937426673AB8}</ProjectGuid>
+    <ProjectGuid>{942D7778-A494-4ED8-8995-558EB669CA25}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>MongoCrudNet</RootNamespace>
-    <AssemblyName>MongoCrudNet</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>MySqlCrudNet</RootNamespace>
+    <AssemblyName>MySqlCrudNet</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,20 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\ReferecneDlls\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\ReferecneDlls\MongoDB.Driver.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BaseMongoRepository.cs" />
-    <Compile Include="IMongoDbContext.cs" />
-    <Compile Include="MongoDbContext.cs" />
-    <Compile Include="StringIdentifiableMongoRepository.cs" />
-    <Compile Include="IntIdentifiableMongoRepository.cs" />
+    <Compile Include="BaseMySqlRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
