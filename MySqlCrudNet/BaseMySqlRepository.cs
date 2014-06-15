@@ -1,4 +1,5 @@
 using CrudNet;
+using System.Collections.Generic;
 
 namespace MySqlCrudNet
 {
@@ -6,9 +7,9 @@ namespace MySqlCrudNet
 	{
 		#region Dependencies
 
-		protected readonly IMySqlDbContext Db;
-		private readonly IMySqlCommandProvider<T> _commandProvider;
-		private readonly IMySqlObjectBuilder<T> _objectBuilder;
+		protected IMySqlDbContext Db;
+		protected IMySqlCommandProvider<T> CommandProvider;
+		protected IMySqlObjectBuilder<T> ObjectBuilder;
 
 		#endregion
 
@@ -18,24 +19,23 @@ namespace MySqlCrudNet
 			IMySqlObjectBuilder<T> objectBuilder)
 		{
 			Db = dbContext;
-			_commandProvider = commandProvider;
-			_objectBuilder = objectBuilder;
+			CommandProvider = commandProvider;
+			ObjectBuilder = objectBuilder;
 		}
 
 		#region ICreatable implementation
 
-		public T Create()
+		public virtual T Create()
 		{
 			return new T();
 		}
 
-		public T Create(T item)
+		public virtual T Create(T item)
 		{
-			var cmd = _commandProvider.Create(item);
+			var cmd = CommandProvider.Create(item);
 			cmd.Connection = Db.Connection;
 			if(cmd.ExecuteNonQuery() > 0)
 			{
-				// TODO: Figure out how to set any auto-generated properties like auto-increment id fields
 				return item;
 			}
 
@@ -46,27 +46,27 @@ namespace MySqlCrudNet
 
 		#region IRetrievable implementation
 
-		public T Retrieve(object key)
+		public virtual T Retrieve(object key)
 		{
-			var cmd = _commandProvider.Retrieve(key);
+			var cmd = CommandProvider.Retrieve(key);
 			cmd.Connection = Db.Connection;
-			return _objectBuilder.BuildObject(cmd.ExecuteReader());
+			return ObjectBuilder.BuildObject(cmd.ExecuteReader());
 		}
 
-		public T Retrieve(object[] keys)
+		public virtual T Retrieve(object[] keys)
 		{
-			var cmd = _commandProvider.Retrieve(keys);
+			var cmd = CommandProvider.Retrieve(keys);
 			cmd.Connection = Db.Connection;
-			return _objectBuilder.BuildObject(cmd.ExecuteReader());
+			return ObjectBuilder.BuildObject(cmd.ExecuteReader());
 		}
 
 		#endregion
 
 		#region IUpdatable implementation
 
-		public T Update(T item)
+		public virtual T Update(T item)
 		{
-			var cmd = _commandProvider.Update(item);
+			var cmd = CommandProvider.Update(item);
 			cmd.Connection = Db.Connection;
 
 			if(cmd.ExecuteNonQuery() > 0)
@@ -81,33 +81,33 @@ namespace MySqlCrudNet
 
 		#region IDeletable implementation
 
-		public bool Delete(object[] keys)
+		public virtual bool Delete(object[] keys)
 		{
-			var cmd = _commandProvider.Delete(keys);
+			var cmd = CommandProvider.Delete(keys);
 			cmd.Connection = Db.Connection;
 
 			return cmd.ExecuteNonQuery() > 0 ? true : false;
 		}
 
-		public bool Delete(T item)
+		public virtual bool Delete(T item)
 		{
-			var cmd = _commandProvider.Delete(item);
+			var cmd = CommandProvider.Delete(item);
 			cmd.Connection = Db.Connection;
 
 			return cmd.ExecuteNonQuery() > 0 ? true : false;
 		}
 
-		public bool DeleteAll()
+		public virtual bool DeleteAll()
 		{
-			var cmd = _commandProvider.DeleteAll();
+			var cmd = CommandProvider.DeleteAll();
 			cmd.Connection = Db.Connection;
 
 			return cmd.ExecuteNonQuery() > 0 ? true : false;
 		}
 
-		public bool DeleteAll(object[] keys)
+		public virtual bool DeleteAll(object[] keys)
 		{
-			var cmd = _commandProvider.DeleteAll(keys);
+			var cmd = CommandProvider.DeleteAll(keys);
 			cmd.Connection = Db.Connection;
 
 			return cmd.ExecuteNonQuery() > 0 ? true : false;
@@ -117,25 +117,25 @@ namespace MySqlCrudNet
 
 		#region IBulkRetrievable implementation
 
-		public System.Collections.Generic.IEnumerable<T> RetrieveAll()
+		public virtual IEnumerable<T> RetrieveAll()
 		{
-			var cmd = _commandProvider.RetrieveAll();
+			var cmd = CommandProvider.RetrieveAll();
 			cmd.Connection = Db.Connection;
-			return _objectBuilder.BuildObjects(cmd.ExecuteReader());
+			return ObjectBuilder.BuildObjects(cmd.ExecuteReader());
 		}
 
-		public System.Collections.Generic.IEnumerable<T> RetrieveAll(object key)
+		public virtual IEnumerable<T> RetrieveAll(object key)
 		{
-			var cmd = _commandProvider.RetrieveAll(key);
+			var cmd = CommandProvider.RetrieveAll(key);
 			cmd.Connection = Db.Connection;
-			return _objectBuilder.BuildObjects(cmd.ExecuteReader());
+			return ObjectBuilder.BuildObjects(cmd.ExecuteReader());
 		}
 
-		public System.Collections.Generic.IEnumerable<T> RetrieveAll(object[] keys)
+		public virtual IEnumerable<T> RetrieveAll(object[] keys)
 		{
-			var cmd = _commandProvider.RetrieveAll(keys);
+			var cmd = CommandProvider.RetrieveAll(keys);
 			cmd.Connection = Db.Connection;
-			return _objectBuilder.BuildObjects(cmd.ExecuteReader());
+			return ObjectBuilder.BuildObjects(cmd.ExecuteReader());
 		}
 
 		#endregion

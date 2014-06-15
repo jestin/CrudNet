@@ -39,5 +39,23 @@ namespace MySqlCrudNetTests
 
 			_userRepository.Create(user);
 		}
+
+		[Test]
+		public void Update()
+		{
+			var user = new User
+			{
+				FirstName = "Jestin",
+				LastName = "Stoffel",
+				Gender = 'M'
+			};
+
+			user = _userRepository.Create(user);
+
+			user.FirstName = "Michelle";
+			user.Gender = 'F';
+
+			_userRepository.Update(user);
+		}
 	}
 }

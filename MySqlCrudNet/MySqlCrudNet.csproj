@@ -43,6 +43,7 @@
     <Compile Include="MySqlDbContext.cs" />
     <Compile Include="IMySqlCommandProvider.cs" />
     <Compile Include="IMySqlObjectBuilder.cs" />
+    <Compile Include="IntIdentifiableMySqlRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

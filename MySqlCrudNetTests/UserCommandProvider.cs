@@ -32,7 +32,13 @@ namespace MySqlCrudNetTests
 
 		public MySqlCommand Update(User item)
 		{
-			throw new System.NotImplementedException();
+			var cmd = new MySqlCommand(@"UPDATE users SET first_name=@firstName, last_name=@lastName, gender=@gender WHERE id=@id");
+			cmd.Parameters.AddWithValue("@firstName", item.FirstName);
+			cmd.Parameters.AddWithValue("@lastName", item.LastName);
+			cmd.Parameters.AddWithValue("@gender", item.Gender);
+			cmd.Parameters.AddWithValue("@id", item.Id);
+
+			return cmd;
 		}
 
 		public MySqlCommand Delete(object[] keys)

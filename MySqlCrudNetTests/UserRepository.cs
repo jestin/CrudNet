@@ -3,7 +3,7 @@ using MySqlCrudNet;
 
 namespace MySqlCrudNetTests
 {
-	public class UserRepository : BaseMySqlRepository<User>, ICreatable<User>
+	public class UserRepository : LongIdentifiableMySqlRepository<User>, ICreatable<User>
 	{
 		public UserRepository(
 			IMySqlDbContext db,

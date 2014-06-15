@@ -41,6 +41,7 @@
     <Compile Include="IUpdatable.cs" />
     <Compile Include="IStringIdentifiable.cs" />
     <Compile Include="IIntIdentifiable.cs" />
+    <Compile Include="ILongIdentifiable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
