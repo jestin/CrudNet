@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>12.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{97EC0C7C-2249-4546-81D2-937426673AB8}</ProjectGuid>
+    <ProjectGuid>{7AB25800-BA51-4343-BC47-9CE4921C1F6B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>MongoCrudNet</RootNamespace>
-    <AssemblyName>MongoCrudNet</AssemblyName>
+    <RootNamespace>MySqlCrudNetTests</RootNamespace>
+    <AssemblyName>MySqlCrudNetTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,26 +31,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\ReferecneDlls\MongoDB.Bson.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <Private>False</Private>
     </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\ReferecneDlls\MongoDB.Driver.dll</HintPath>
+    <Reference Include="System.Data" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\ReferecneDlls\MySql.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BaseMongoRepository.cs" />
-    <Compile Include="IMongoDbContext.cs" />
-    <Compile Include="MongoDbContext.cs" />
-    <Compile Include="StringIdentifiableMongoRepository.cs" />
-    <Compile Include="IntIdentifiableMongoRepository.cs" />
+    <Compile Include="IntegrationTests.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserRepository.cs" />
+    <Compile Include="UserCommandProvider.cs" />
+    <Compile Include="UserObjectBuilder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\CrudNet\CrudNet.csproj">
       <Project>{E46A899D-F024-49BF-BCC2-89285A506A86}</Project>
       <Name>CrudNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MySqlCrudNet\MySqlCrudNet.csproj">
+      <Project>{942D7778-A494-4ED8-8995-558EB669CA25}</Project>
+      <Name>MySqlCrudNet</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

@@ -7,12 +7,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudNet", "CrudNet\CrudNet.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySqlCrudNet", "MySqlCrudNet\MySqlCrudNet.csproj", "{942D7778-A494-4ED8-8995-558EB669CA25}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B4DDD35D-1CDF-4A62-8143-8502AE9C44FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySqlCrudNetTests", "MySqlCrudNetTests\MySqlCrudNetTests.csproj", "{7AB25800-BA51-4343-BC47-9CE4921C1F6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AB25800-BA51-4343-BC47-9CE4921C1F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AB25800-BA51-4343-BC47-9CE4921C1F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AB25800-BA51-4343-BC47-9CE4921C1F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AB25800-BA51-4343-BC47-9CE4921C1F6B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{942D7778-A494-4ED8-8995-558EB669CA25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{942D7778-A494-4ED8-8995-558EB669CA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{942D7778-A494-4ED8-8995-558EB669CA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -25,6 +33,9 @@ Global
 		{E46A899D-F024-49BF-BCC2-89285A506A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E46A899D-F024-49BF-BCC2-89285A506A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E46A899D-F024-49BF-BCC2-89285A506A86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7AB25800-BA51-4343-BC47-9CE4921C1F6B} = {B4DDD35D-1CDF-4A62-8143-8502AE9C44FD}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = MongoCrudNet\MongoCrudNet.csproj
