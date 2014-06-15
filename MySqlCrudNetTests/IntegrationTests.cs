@@ -1,5 +1,6 @@
-using NUnit.Framework;
 using MySqlCrudNet;
+using NUnit.Framework;
+using System.Linq;
 
 namespace MySqlCrudNetTests
 {
@@ -37,7 +38,15 @@ namespace MySqlCrudNetTests
 				Gender = 'M'
 			};
 
-			_userRepository.Create(user);
+			user = _userRepository.Create(user);
+
+			var retrievedUser = _userRepository.Retrieve(user.Id);
+
+			Assert.IsNotNull(retrievedUser);
+			Assert.AreEqual(user.Id, retrievedUser.Id);
+			Assert.AreEqual(user.FirstName, retrievedUser.FirstName);
+			Assert.AreEqual(user.LastName, retrievedUser.LastName);
+			Assert.AreEqual(user.Gender, retrievedUser.Gender);
 		}
 
 		[Test]
@@ -56,6 +65,57 @@ namespace MySqlCrudNetTests
 			user.Gender = 'F';
 
 			_userRepository.Update(user);
+
+			var retrievedUser = _userRepository.Retrieve(user.Id);
+
+			Assert.IsNotNull(retrievedUser);
+			Assert.AreEqual(user.Id, retrievedUser.Id);
+			Assert.AreEqual(user.FirstName, retrievedUser.FirstName);
+			Assert.AreEqual(user.LastName, retrievedUser.LastName);
+			Assert.AreEqual(user.Gender, retrievedUser.Gender);
+		}
+
+		[Test]
+		public void RetrieveAll()
+		{
+			var user1 = new User
+			{
+				FirstName = "Jestin",
+				LastName = "Stoffel",
+				Gender = 'M'
+			};
+
+			var user2 = new User
+			{
+				FirstName = "Michelle",
+				LastName = "Stoffel",
+				Gender = 'F'
+			};
+
+			var user3 = new User
+			{
+				FirstName = "Zaphod",
+				LastName = "Stoffel",
+				Gender = 'M'
+			};
+
+			var user4 = new User
+			{
+				FirstName = "Zelda",
+				LastName = "Stoffel",
+				Gender = 'F'
+			};
+
+			_userRepository.Create(user1);
+			_userRepository.Create(user2);
+			_userRepository.Create(user3);
+			_userRepository.Create(user4);
+
+			var users = _userRepository.RetrieveAll();
+
+			Assert.IsNotNull(users);
+			Assert.IsNotEmpty(users);
+			Assert.AreEqual(4, users.Count());
 		}
 	}
 }

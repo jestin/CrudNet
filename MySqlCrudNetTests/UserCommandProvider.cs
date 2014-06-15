@@ -22,12 +22,18 @@ namespace MySqlCrudNetTests
 
 		public MySqlCommand Retrieve(object key)
 		{
-			throw new System.NotImplementedException();
+			var cmd = new MySqlCommand(@"SELECT * FROM users WHERE id=@id");
+			cmd.Parameters.AddWithValue("@id", (long) key);
+
+			return cmd;
 		}
 
 		public MySqlCommand Retrieve(object[] keys)
 		{
-			throw new System.NotImplementedException();
+			var cmd = new MySqlCommand(@"SELECT * FROM users WHERE id=@id");
+			cmd.Parameters.AddWithValue("@id", (long) keys[0]); // ignoring complex keys for this table
+
+			return cmd;
 		}
 
 		public MySqlCommand Update(User item)
@@ -43,12 +49,18 @@ namespace MySqlCrudNetTests
 
 		public MySqlCommand Delete(object[] keys)
 		{
-			throw new System.NotImplementedException();
+			var cmd = new MySqlCommand(@"DELETE FROM users WHERE id=@id");
+			cmd.Parameters.AddWithValue("@id", (long) keys[0]);
+
+			return cmd;
 		}
 
 		public MySqlCommand Delete(User item)
 		{
-			throw new System.NotImplementedException();
+			var cmd = new MySqlCommand(@"DELETE FROM users WHERE id=@id");
+			cmd.Parameters.AddWithValue("@id", item.Id);
+
+			return cmd;
 		}
 
 		public MySqlCommand DeleteAll()
@@ -63,7 +75,7 @@ namespace MySqlCrudNetTests
 
 		public MySqlCommand RetrieveAll()
 		{
-			throw new System.NotImplementedException();
+			return new MySqlCommand(@"SELECT * FROM users");
 		}
 
 		public MySqlCommand RetrieveAll(object key)
