@@ -44,9 +44,9 @@ namespace MongoCrudNet.Mongo
 
                 if (Database != null)
                 {
-                    EnsureIndexes();
 					SetUpClassMappings();
-                    Initialized = true;
+					EnsureIndexes();
+					Initialized = true;
                 }
             }
 
